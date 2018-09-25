@@ -7,5 +7,4 @@
   <a href="https://github.com/prettier/prettier">
     <img alt="code style: prettier" src="https://img.shields.io/travis/com/evgeniuz/manhattan-club/master.svg?style=flat-square">
   </a>
-  [![Build Status]()](https://travis-ci.org/evgeniuz/manhattan-club)
 </p>
