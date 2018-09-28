@@ -9,12 +9,14 @@ interface IStateProps {
 
 export type IProps = IStateProps
 
-/* tslint:disable-next-line:variable-name typedef */
-const Main = ({ scoresHTML }: IProps) => (
-	<React.Fragment>
-		<Header title="Результаты" />
-		<div dangerouslySetInnerHTML={{ __html: scoresHTML }} />
-	</React.Fragment>
-)
+/* tslint:disable-next-line:function-name */
+function Main({ scoresHTML }: IProps): JSX.Element {
+	return (
+		<React.Fragment>
+			<Header title="Результаты" />
+			<div dangerouslySetInnerHTML={{ __html: scoresHTML }} />
+		</React.Fragment>
+	)
+}
 
 export default connect((state: IStateProps) => state)(Main)

@@ -24,9 +24,7 @@ $headings-font-family: 'Zamenhof', sans-serif;
 	font-family: 'Zamenhof';
 	font-style: normal;
 	font-weight: normal;
-	src: local('Zamenhof'), url('./../fonts/Zamenhof-Plain.woff') format('woff'),
-		url('./../fonts/Zamenhof-Plain.ttf') format('truetype'),
-		url('./../fonts/Zamenhof-Plain.eot') format('embedded-opentype');
+	src: local('Zamenhof');
 }
 
 @import 'bootstrap/scss/bootstrap';

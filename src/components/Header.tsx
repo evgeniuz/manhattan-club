@@ -8,18 +8,20 @@ export interface IProps {
 	title: string
 }
 
-/* tslint:disable-next-line:variable-name typedef */
-const Header = ({ title }: IProps) => (
-	<div className="container mt-3 mb-3">
-		<div className="d-flex flex-wrap justify-content-center align-items-center">
-			<img height="150" width="150" src={logoPng} alt="logo" />
-			<div className="flex-grow-1">
-				<h1 className="text-center">
-					<Colorize text={title} />
-				</h1>
+/* tslint:disable-next-line:function-name */
+function Header({ title }: IProps): JSX.Element {
+	return (
+		<div className="container mt-3 mb-3">
+			<div className="d-flex flex-wrap justify-content-center align-items-center">
+				<img height="150" width="150" src={logoPng} alt="logo" />
+				<div className="flex-grow-1">
+					<h1 className="text-center">
+						<Colorize text={title} />
+					</h1>
+				</div>
 			</div>
 		</div>
-	</div>
-)
+	)
+}
 
 export default Header

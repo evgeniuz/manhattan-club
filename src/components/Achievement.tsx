@@ -12,18 +12,20 @@ export interface IProps {
 	achievement: IAchievement
 }
 
-/* tslint:disable-next-line:variable-name typedef */
-const Achievement = ({ achievement }: IProps) => (
-	<div className="card bg-dark mb-1">
-		<div className="card-header">
-			<h3 className="mb-0">
-				<FontAwesomeIcon icon={faMedal} />
-				&nbsp;
-				{achievement.name}
-			</h3>
+/* tslint:disable-next-line:function-name */
+function Achievement({ achievement }: IProps): JSX.Element {
+	return (
+		<div className="card bg-dark mb-1">
+			<div className="card-header">
+				<h3 className="mb-0">
+					<FontAwesomeIcon icon={faMedal} />
+					&nbsp;
+					{achievement.name}
+				</h3>
+			</div>
+			<div className="card-body">{achievement.description}</div>
 		</div>
-		<div className="card-body">{achievement.description}</div>
-	</div>
-)
+	)
+}
 
 export default Achievement

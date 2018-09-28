@@ -10,7 +10,7 @@ export interface IAchievement {
 	description: string
 }
 
-interface ITeamRaw {
+export interface ITeamRaw {
 	name: string
 	achievementIDs: string[]
 }

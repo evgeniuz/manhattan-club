@@ -7,7 +7,14 @@ import { createStore, Store } from 'redux'
 import * as iconv from 'iconv-lite'
 
 import { updateScores } from './actions'
-import { ACHIEVEMENTS, IAchievement, IState, ITeam, TEAMS } from './constants'
+import {
+	ACHIEVEMENTS,
+	IAchievement,
+	IState,
+	ITeam,
+	ITeamRaw,
+	TEAMS
+} from './constants'
 import reducers from './reducers'
 
 import Achievements from './components/Achievements'
@@ -35,7 +42,7 @@ function getAchievementsByIDs(achievementIDs: string[]): IAchievement[] {
 	)
 }
 
-const processedTeams: ITeam[] = TEAMS.map((team: ITeam) => {
+const processedTeams: ITeam[] = TEAMS.map((team: ITeamRaw) => {
 	const achievements: IAchievement[] = getAchievementsByIDs(team.achievementIDs)
 
 	return Object.assign({}, team, { achievements })

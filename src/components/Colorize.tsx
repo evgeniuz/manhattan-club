@@ -35,11 +35,13 @@ class Colorize extends React.PureComponent<IProps> {
 
 		return (
 			<React.Fragment>
-				{text.split('').map((letter: string) => (
-					<span key={uuidv4()} className={`color-${getColor.next().value}`}>
-						{letter}
-					</span>
-				))}
+				{text.split('').map(
+					(letter: string): JSX.Element => (
+						<span key={uuidv4()} className={`color-${getColor.next().value}`}>
+							{letter}
+						</span>
+					)
+				)}
 			</React.Fragment>
 		)
 	}
