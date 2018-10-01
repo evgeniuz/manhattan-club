@@ -1,6 +1,4 @@
 build/
-deploy/Dockerfile
-deploy/nginx.conf
 
 yarn.lock
 
