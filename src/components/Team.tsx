@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { IAchievement, ITeam } from '../constants'
+import { ITeam, ITeamAchievement } from '../constants'
 
 import Achievement from './Achievement'
 
@@ -13,8 +13,12 @@ function Team({ team }: IProps): JSX.Element {
 	return (
 		<div>
 			<h2 className="text-center">Команда «{team.name}»</h2>
-			{team.achievements.map((achievement: IAchievement) => (
-				<Achievement key={achievement.id} achievement={achievement} />
+			{team.teamAchievements.map((teamAchievement: ITeamAchievement) => (
+				<Achievement
+					key={teamAchievement.achievementId}
+					achievementId={teamAchievement.achievementId}
+					count={teamAchievement.count}
+				/>
 			))}
 			<div className="text-center">
 				<div

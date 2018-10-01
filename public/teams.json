@@ -1,0 +1,402 @@
+[
+	{
+		"name": "Amigos",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			},
+			{
+				"achievementId": "fullhouse",
+				"count": 1
+			},
+			{
+				"achievementId": "diehard10",
+				"count": 1
+			}
+		]
+	},
+	{
+		"name": "Carpe Diem",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			},
+			{
+				"achievementId": "unlucky",
+				"count": 1
+			}
+		]
+	},
+	{
+		"name": "Excalibur",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			},
+			{
+				"achievementId": "theme",
+				"count": 1
+			},
+			{
+				"achievementId": "fullhouse",
+				"count": 1
+			},
+			{
+				"achievementId": "music10",
+				"count": 1
+			}
+		]
+	},
+	{
+		"name": "PHOS",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			},
+			{
+				"achievementId": "music10",
+				"count": 1
+			}
+		]
+	},
+	{
+		"name": "Yes!",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			},
+			{
+				"achievementId": "diehard10",
+				"count": 1
+			},
+			{
+				"achievementId": "music10",
+				"count": 1
+			}
+		]
+	},
+	{
+		"name": "Башкавитые",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			},
+			{
+				"achievementId": "hattrick",
+				"count": 1
+			},
+			{
+				"achievementId": "first",
+				"count": 1
+			},
+			{
+				"achievementId": "diehard10",
+				"count": 1
+			},
+			{
+				"achievementId": "letter10",
+				"count": 1
+			},
+			{
+				"achievementId": "spotlight10",
+				"count": 1
+			},
+			{
+				"achievementId": "music10",
+				"count": 1
+			}
+		]
+	},
+	{
+		"name": "БОССЫ",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			},
+			{
+				"achievementId": "unlucky",
+				"count": 1
+			},
+			{
+				"achievementId": "music10",
+				"count": 1
+			}
+		]
+	},
+	{
+		"name": "ВЖУХ",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			},
+			{
+				"achievementId": "music10",
+				"count": 1
+			}
+		]
+	},
+	{
+		"name": "ДаитаннаЭби",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			}
+		]
+	},
+	{
+		"name": "Де Лумино",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			},
+			{
+				"achievementId": "music10",
+				"count": 1
+			}
+		]
+	},
+	{
+		"name": "Дети Дамблдора",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			},
+			{
+				"achievementId": "fullhouse",
+				"count": 1
+			},
+			{
+				"achievementId": "unlucky",
+				"count": 1
+			}
+		]
+	},
+	{
+		"name": "Ламы в шляпах",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			},
+			{
+				"achievementId": "diehard10",
+				"count": 1
+			},
+			{
+				"achievementId": "spotlight10",
+				"count": 1
+			},
+			{
+				"achievementId": "music10",
+				"count": 1
+			}
+		]
+	},
+	{
+		"name": "Мандрагора",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			},
+			{
+				"achievementId": "unlucky",
+				"count": 1
+			},
+			{
+				"achievementId": "music10",
+				"count": 1
+			}
+		]
+	},
+	{
+		"name": "Мы есть Грут",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			},
+			{
+				"achievementId": "first",
+				"count": 1
+			},
+			{
+				"achievementId": "music10",
+				"count": 1
+			}
+		]
+	},
+	{
+		"name": "Незримый Университет",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			},
+			{
+				"achievementId": "fullhouse",
+				"count": 1
+			},
+			{
+				"achievementId": "spotlight10",
+				"count": 1
+			},
+			{
+				"achievementId": "music10",
+				"count": 1
+			}
+		]
+	},
+	{
+		"name": "Оранжевый Ёскьюватн",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			}
+		]
+	},
+	{
+		"name": "Пингви и Ко",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			},
+			{
+				"achievementId": "music10",
+				"count": 1
+			}
+		]
+	},
+	{
+		"name": "Северный Крот",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			},
+			{
+				"achievementId": "music10",
+				"count": 1
+			}
+		]
+	},
+	{
+		"name": "Сталактиты",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			},
+			{
+				"achievementId": "fullhouse",
+				"count": 1
+			},
+			{
+				"achievementId": "music10",
+				"count": 1
+			}
+		]
+	},
+	{
+		"name": "Таки Да",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			},
+			{
+				"achievementId": "specialists",
+				"count": 1
+			},
+			{
+				"achievementId": "letter10",
+				"count": 1
+			}
+		]
+	},
+	{
+		"name": "УниКумы",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			},
+			{
+				"achievementId": "theme",
+				"count": 1
+			},
+			{
+				"achievementId": "fullhouse",
+				"count": 1
+			},
+			{
+				"achievementId": "diehard10",
+				"count": 1
+			},
+			{
+				"achievementId": "mind10",
+				"count": 1
+			},
+			{
+				"achievementId": "prestige10",
+				"count": 1
+			},
+			{
+				"achievementId": "music10",
+				"count": 1
+			}
+		]
+	},
+	{
+		"name": "Усы Бурды",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			},
+			{
+				"achievementId": "music10",
+				"count": 1
+			}
+		]
+	},
+	{
+		"name": "Франкотики",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			}
+		]
+	},
+	{
+		"name": "Хипстера Бозон",
+		"teamAchievements": [
+			{
+				"achievementId": "combo",
+				"count": 1
+			},
+			{
+				"achievementId": "diehard10",
+				"count": 1
+			},
+			{
+				"achievementId": "music10",
+				"count": 1
+			}
+		]
+	}
+]

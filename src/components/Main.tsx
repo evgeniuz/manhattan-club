@@ -3,11 +3,9 @@ import { connect } from 'react-redux'
 
 import Header from './Header'
 
-interface IStateProps {
+export interface IProps {
 	scoresHTML: string
 }
-
-export type IProps = IStateProps
 
 /* tslint:disable-next-line:function-name */
 function Main({ scoresHTML }: IProps): JSX.Element {
@@ -19,4 +17,4 @@ function Main({ scoresHTML }: IProps): JSX.Element {
 	)
 }
 
-export default connect((state: IStateProps) => state)(Main)
+export default connect((state: IProps) => state)(Main)

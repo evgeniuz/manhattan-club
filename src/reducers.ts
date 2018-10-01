@@ -1,7 +1,20 @@
 import { combineReducers, Reducer, AnyAction } from 'redux'
 
-import { ISelectTeamAction, IUpdateScoresAction } from './actions'
-import { IState, ITeam, UPDATE_SCORES, SELECT_TEAM } from './constants'
+import {
+	ISelectTeamAction,
+	IUpdateScoresAction,
+	IUpdateTeamsAction,
+	IUpdateAchievementsAction
+} from './actions'
+import {
+	IState,
+	ITeam,
+	IAchievement,
+	UPDATE_SCORES,
+	SELECT_TEAM,
+	UPDATE_ACHIEVEMENTS,
+	UPDATE_TEAMS
+} from './constants'
 
 function selectedTeam(
 	state: ITeam | null = null,
@@ -15,8 +28,25 @@ function selectedTeam(
 	}
 }
 
-function teams(state: ITeam[] = []): ITeam[] {
-	return state
+function achievements(
+	state: IAchievement[] = [],
+	action: IUpdateAchievementsAction
+): IAchievement[] {
+	switch (action.type) {
+		case UPDATE_ACHIEVEMENTS:
+			return action.achievements
+		default:
+			return state
+	}
+}
+
+function teams(state: ITeam[] = [], action: IUpdateTeamsAction): ITeam[] {
+	switch (action.type) {
+		case UPDATE_TEAMS:
+			return action.teams
+		default:
+			return state
+	}
 }
 
 function scoresHTML(state: string = '', action: IUpdateScoresAction): string {
@@ -31,6 +61,7 @@ function scoresHTML(state: string = '', action: IUpdateScoresAction): string {
 const rootReducer: Reducer<IState, AnyAction> = combineReducers({
 	scoresHTML,
 	selectedTeam,
+	achievements,
 	teams
 })
 

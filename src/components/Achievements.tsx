@@ -43,7 +43,7 @@ function Achievements({
 								>
 									<span className="h6 mb-0">{team.name}</span>
 									<span className="badge badge-primary badge-pill">
-										{team.achievementIDs.length}
+										{team.teamAchievements.length}
 									</span>
 								</button>
 							))}
@@ -51,7 +51,7 @@ function Achievements({
 					</div>
 
 					<div className="col-md-8">
-						<Team team={selectedTeam} />
+						{selectedTeam && <Team team={selectedTeam} />}
 					</div>
 				</div>
 			</div>
