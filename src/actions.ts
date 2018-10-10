@@ -11,6 +11,7 @@ export const SELECT_TEAM: string = 'SELECT_TEAM'
 export const UPDATE_SCORES: string = 'UPDATE_SCORES'
 export const UPDATE_TEAMS: string = 'UPDATE_TEAMS'
 export const UPDATE_ACHIEVEMENTS: string = 'UPDATE_ACHIEVEMENTS'
+export const UPDATE_ANSWERS: string = 'UPDATE_ANSWERS'
 
 export interface ISelectTeamAction {
 	type: typeof SELECT_TEAM
@@ -32,6 +33,11 @@ export interface IUpdateTeamsAction {
 	teams: ITeam[]
 }
 
+export interface IUpdateAnswersAction {
+	type: typeof UPDATE_ANSWERS
+	answers: string[]
+}
+
 export function selectTeam(team: ITeam): ISelectTeamAction {
 	return { team, type: SELECT_TEAM }
 }
@@ -48,6 +54,10 @@ export function updateAchievements(
 
 export function updateTeams(teams: ITeam[]): IUpdateTeamsAction {
 	return { teams, type: UPDATE_TEAMS }
+}
+
+export function updateAnswers(answers: string[]): IUpdateAnswersAction {
+	return { answers, type: UPDATE_ANSWERS }
 }
 
 export function fetchScores(): ThunkResult<void> {
@@ -81,6 +91,16 @@ export function fetchTeams(): ThunkResult<void> {
 				if (teams.length > 0) {
 					dispatch(selectTeam(teams[0]))
 				}
+			})
+	}
+}
+
+export function fetchAnswers(): ThunkResult<void> {
+	return (dispatch: Dispatch): void => {
+		fetch('/data/answers.json')
+			.then((response: Response) => response.json())
+			.then((answers: string[]) => {
+				dispatch(updateAnswers(answers))
 			})
 	}
 }

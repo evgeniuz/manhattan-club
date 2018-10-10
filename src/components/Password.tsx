@@ -3,6 +3,11 @@ import * as React from 'react'
 import * as levenshtein from 'fast-levenshtein'
 
 import Header from 'components/Header'
+import { connect } from 'react-redux'
+
+interface IProps {
+	answers: string[]
+}
 
 interface IState {
 	guess: string
@@ -10,8 +15,8 @@ interface IState {
 	index: number
 }
 
-export default class Password extends React.PureComponent<{}, IState> {
-	constructor(props: {}) {
+class Password extends React.PureComponent<IProps, IState> {
+	constructor(props: IProps) {
 		super(props)
 		this.state = { guess: '', correct: '', index: -1 }
 
@@ -20,16 +25,15 @@ export default class Password extends React.PureComponent<{}, IState> {
 
 	public handleGuess(event: React.ChangeEvent<HTMLInputElement>): void {
 		const guess: string = event.target.value
+		const { answers }: IProps = this.props
 
-		const ANSWERS: string[] = ['test', 'example']
-
-		const answers: string[] = ANSWERS.filter(
+		const distances: string[] = answers.filter(
 			(answer: string) =>
 				levenshtein.get(answer.toLowerCase(), guess.toLowerCase()) < 2
 		)
 
-		const correct: string = answers.length > 0 ? answers[0] : ''
-		const index: number = ANSWERS.indexOf(correct) + 1
+		const correct: string = distances.length > 0 ? distances[0] : ''
+		const index: number = answers.indexOf(correct) + 1
 
 		this.setState({
 			correct,
@@ -64,3 +68,5 @@ export default class Password extends React.PureComponent<{}, IState> {
 		)
 	}
 }
+
+export default connect((state: IProps) => state)(Password)

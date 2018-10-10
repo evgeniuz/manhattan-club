@@ -8,12 +8,18 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import { fetchScores, fetchTeams, fetchAchievements } from 'actions'
+import {
+	fetchScores,
+	fetchTeams,
+	fetchAchievements,
+	fetchAnswers
+} from 'actions'
 import { rootReducer, IState } from 'reducers'
 import { unregisterServiceWorker } from 'utils'
 
-import Achievements from 'components/Achievements'
 import Main from 'components/Main'
+import Achievements from 'components/Achievements'
+import Password from 'components/Password'
 
 import 'css/index.scss'
 
@@ -29,6 +35,7 @@ const store: Store & {
 store.dispatch(fetchScores())
 store.dispatch(fetchTeams())
 store.dispatch(fetchAchievements())
+store.dispatch(fetchAnswers())
 
 ReactDOM.render(
 	<Provider store={store}>
@@ -36,6 +43,7 @@ ReactDOM.render(
 			<Switch>
 				<Route exact={true} path="/" component={Main} />
 				<Route path="/achievements" component={Achievements} />
+				<Route path="/password" component={Password} />
 			</Switch>
 		</BrowserRouter>
 	</Provider>,

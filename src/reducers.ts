@@ -8,7 +8,9 @@ import {
 	SELECT_TEAM,
 	UPDATE_SCORES,
 	UPDATE_TEAMS,
-	UPDATE_ACHIEVEMENTS
+	UPDATE_ACHIEVEMENTS,
+	IUpdateAnswersAction,
+	UPDATE_ANSWERS
 } from 'actions'
 
 function selectedTeam(
@@ -53,16 +55,27 @@ function scoresHTML(state: string = '', action: IUpdateScoresAction): string {
 	}
 }
 
+function answers(state: string[] = [], action: IUpdateAnswersAction): string[] {
+	switch (action.type) {
+		case UPDATE_ANSWERS:
+			return action.answers
+		default:
+			return state
+	}
+}
+
 export interface IState {
 	achievements: IAchievement[]
 	teams: ITeam[]
 	selectedTeam: ITeam | null
 	scoresHTML: string
+	answers: string[]
 }
 
 export const rootReducer: Reducer<IState, AnyAction> = combineReducers({
 	scoresHTML,
 	selectedTeam,
 	achievements,
-	teams
+	teams,
+	answers
 })
