@@ -1,15 +1,15 @@
 import * as React from 'react'
 
-import Colorize from './Colorize'
+import Colorize from 'components/Colorize'
 
-import logoPng from '../images/logo.png'
+import logoPng from 'images/logo.png'
 
 export interface IProps {
 	title: string
 }
 
 /* tslint:disable-next-line:function-name */
-function Header({ title }: IProps): JSX.Element {
+export default function Header({ title }: IProps): JSX.Element {
 	return (
 		<div className="container mt-3 mb-3">
 			<div className="d-flex flex-wrap justify-content-center align-items-center">
@@ -23,5 +23,3 @@ function Header({ title }: IProps): JSX.Element {
 		</div>
 	)
 }
-
-export default Header

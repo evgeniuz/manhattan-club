@@ -8,3 +8,7 @@ yarn.lock
 
 *.ico
 *.png
+
+*.woff
+*.ttf
+*.eot

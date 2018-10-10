@@ -1,13 +1,10 @@
 import * as React from 'react'
-import * as uuidv4 from 'uuid'
 
-export interface IProps {
-	text: string
-}
+import * as uuidv4 from 'uuid'
 
 type Color = string
 
-const colorChoices: Color[] = ['violet', 'blue', 'yellow', 'red']
+const colorChoices: Color[] = ['#b43960', '#ffb30f', '#009b95', '#f42e14']
 
 function randomColor(): Color {
 	return colorChoices[Math.floor(Math.random() * colorChoices.length)]
@@ -27,7 +24,11 @@ function* colorGenerator(): IterableIterator<Color> {
 	}
 }
 
-class Colorize extends React.PureComponent<IProps> {
+export interface IProps {
+	text: string
+}
+
+export default class Colorize extends React.PureComponent<IProps> {
 	public render(): JSX.Element {
 		const { text }: IProps = this.props
 
@@ -37,7 +38,7 @@ class Colorize extends React.PureComponent<IProps> {
 			<React.Fragment>
 				{text.split('').map(
 					(letter: string): JSX.Element => (
-						<span key={uuidv4()} className={`color-${getColor.next().value}`}>
+						<span key={uuidv4()} style={{ color: getColor.next().value }}>
 							{letter}
 						</span>
 					)
@@ -46,5 +47,3 @@ class Colorize extends React.PureComponent<IProps> {
 		)
 	}
 }
-
-export default Colorize

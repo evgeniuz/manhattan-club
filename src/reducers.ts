@@ -4,17 +4,12 @@ import {
 	ISelectTeamAction,
 	IUpdateScoresAction,
 	IUpdateTeamsAction,
-	IUpdateAchievementsAction
-} from './actions'
-import {
-	IState,
-	ITeam,
-	IAchievement,
-	UPDATE_SCORES,
+	IUpdateAchievementsAction,
 	SELECT_TEAM,
-	UPDATE_ACHIEVEMENTS,
-	UPDATE_TEAMS
-} from './constants'
+	UPDATE_SCORES,
+	UPDATE_TEAMS,
+	UPDATE_ACHIEVEMENTS
+} from 'actions'
 
 function selectedTeam(
 	state: ITeam | null = null,
@@ -58,11 +53,16 @@ function scoresHTML(state: string = '', action: IUpdateScoresAction): string {
 	}
 }
 
-const rootReducer: Reducer<IState, AnyAction> = combineReducers({
+export interface IState {
+	achievements: IAchievement[]
+	teams: ITeam[]
+	selectedTeam: ITeam | null
+	scoresHTML: string
+}
+
+export const rootReducer: Reducer<IState, AnyAction> = combineReducers({
 	scoresHTML,
 	selectedTeam,
 	achievements,
 	teams
 })
-
-export default rootReducer

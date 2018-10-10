@@ -1,59 +1,37 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
 import { createStore, Store } from 'redux'
+import { Provider } from 'react-redux'
 
-import * as iconv from 'iconv-lite'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import { updateScores, updateAchievements, updateTeams } from './actions'
-import reducers from './reducers'
-import { IAchievement, ITeam } from './constants'
+import { rootReducer } from 'reducers'
+import { unregisterServiceWorker, fetchData } from 'utils'
 
-import Achievements from './components/Achievements'
-import Main from './components/Main'
-import Password from './components/Password'
+import Achievements from 'components/Achievements'
+import Main from 'components/Main'
 
-import './css/index.css'
+import 'css/index.css'
+
+unregisterServiceWorker()
 
 const store: Store = createStore(
-	reducers,
+	rootReducer,
 	(window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
 		(window as any).__REDUX_DEVTOOLS_EXTENSION__()
 )
 
-fetch('/scores.html')
-	.then((response: Response) => response.arrayBuffer())
-	.then((buffer: ArrayBuffer) =>
-		iconv.decode(Buffer.from(new Uint8Array(buffer)), 'win1251')
-	)
-	.then((html: string) => store.dispatch(updateScores(html)))
-
-fetch('/achievements.json')
-	.then((response: Response) => response.json())
-	.then((achievements: IAchievement[]) =>
-		store.dispatch(updateAchievements(achievements))
-	)
-
-fetch('/teams.json')
-	.then((response: Response) => response.json())
-	.then((teams: ITeam[]) => store.dispatch(updateTeams(teams)))
-
-if ('serviceWorker' in navigator) {
-	navigator.serviceWorker.ready.then(
-		(registration: ServiceWorkerRegistration) => registration.unregister()
-	)
-}
+fetchData(store)
 
 ReactDOM.render(
 	<Provider store={store}>
-		<Router>
+		<BrowserRouter>
 			<Switch>
 				<Route exact={true} path="/" component={Main} />
 				<Route path="/achievements" component={Achievements} />
-				<Route path="/password" component={Password} />
 			</Switch>
-		</Router>
+		</BrowserRouter>
 	</Provider>,
 	document.getElementById('root')
 )

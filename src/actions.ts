@@ -1,29 +1,25 @@
-import {
-	ITeam,
-	IAchievement,
-	SELECT_TEAM,
-	UPDATE_SCORES,
-	UPDATE_ACHIEVEMENTS,
-	UPDATE_TEAMS
-} from './constants'
+export const SELECT_TEAM: string = 'SELECT_TEAM'
+export const UPDATE_SCORES: string = 'UPDATE_SCORES'
+export const UPDATE_TEAMS: string = 'UPDATE_TEAMS'
+export const UPDATE_ACHIEVEMENTS: string = 'UPDATE_ACHIEVEMENTS'
 
 export interface ISelectTeamAction {
-	type: SELECT_TEAM
+	type: typeof SELECT_TEAM
 	team: ITeam
 }
 
 export interface IUpdateScoresAction {
-	type: UPDATE_SCORES
+	type: typeof UPDATE_SCORES
 	scoresHTML: string
 }
 
 export interface IUpdateAchievementsAction {
-	type: UPDATE_ACHIEVEMENTS
+	type: typeof UPDATE_ACHIEVEMENTS
 	achievements: IAchievement[]
 }
 
 export interface IUpdateTeamsAction {
-	type: UPDATE_TEAMS
+	type: typeof UPDATE_TEAMS
 	teams: ITeam[]
 }
 

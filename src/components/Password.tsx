@@ -2,15 +2,15 @@ import * as React from 'react'
 
 import * as levenshtein from 'fast-levenshtein'
 
-import Header from './Header'
+import Header from 'components/Header'
 
-export interface IState {
+interface IState {
 	guess: string
 	correct: string
 	index: number
 }
 
-class Password extends React.PureComponent<{}, IState> {
+export default class Password extends React.PureComponent<{}, IState> {
 	constructor(props: {}) {
 		super(props)
 		this.state = { guess: '', correct: '', index: -1 }
@@ -64,5 +64,3 @@ class Password extends React.PureComponent<{}, IState> {
 		)
 	}
 }
-
-export default Password

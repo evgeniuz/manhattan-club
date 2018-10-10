@@ -1,15 +1,13 @@
 import * as React from 'react'
 
-import { ITeam, ITeamAchievement } from '../constants'
-
-import Achievement from './Achievement'
+import Achievement from 'components/Achievement'
 
 export interface IProps {
 	team: ITeam
 }
 
 /* tslint:disable-next-line:function-name */
-function Team({ team }: IProps): JSX.Element {
+export default function Team({ team }: IProps): JSX.Element {
 	return (
 		<div>
 			<h2 className="text-center">Команда «{team.name}»</h2>
@@ -31,5 +29,3 @@ function Team({ team }: IProps): JSX.Element {
 		</div>
 	)
 }
-
-export default Team

@@ -1,53 +1,24 @@
 import * as React from 'react'
+
 import { connect } from 'react-redux'
-import { Dispatch } from 'redux'
 
-import { ISelectTeamAction, selectTeam } from '../actions'
-import { ITeam } from '../constants'
+import Header from 'components/Header'
+import Teams from 'components/Teams'
+import Team from 'components/Team'
 
-import Header from './Header'
-import Team from './Team'
-
-interface IDispatchProps {
-	onSelectTeam: (team: ITeam) => void
-}
-
-interface IStateProps {
-	teams: ITeam[]
+export interface IProps {
 	selectedTeam: ITeam
 }
 
-export type IProps = IDispatchProps & IStateProps
-
 /* tslint:disable-next-line:function-name */
-function Achievements({
-	teams,
-	selectedTeam,
-	onSelectTeam
-}: IProps): JSX.Element {
+function Achievements({ selectedTeam }: IProps): JSX.Element {
 	return (
 		<React.Fragment>
+			<Header title="Достижения" />
 			<div className="container text-light">
-				<Header title="Достижения" />
 				<div className="row">
 					<div className="col-md-4">
-						<div className="list-group bg-dark">
-							{teams.map((team: ITeam) => (
-								<button
-									type="button"
-									className={`list-group-item list-group-item-action text-white d-flex justify-content-between align-items-center ${
-										selectedTeam === team ? 'active' : 'bg-dark'
-									}`}
-									key={team.name}
-									onClick={onSelectTeam.bind(null, team)}
-								>
-									<span className="h6 mb-0">{team.name}</span>
-									<span className="badge badge-primary badge-pill">
-										{team.teamAchievements.length}
-									</span>
-								</button>
-							))}
-						</div>
+						<Teams />
 					</div>
 
 					<div className="col-md-8">
@@ -59,15 +30,4 @@ function Achievements({
 	)
 }
 
-function mapDispatchToProps(
-	dispatch: Dispatch<ISelectTeamAction>
-): IDispatchProps {
-	return {
-		onSelectTeam: (team: ITeam): ISelectTeamAction => dispatch(selectTeam(team))
-	}
-}
-
-export default connect(
-	(state: IStateProps) => state,
-	mapDispatchToProps
-)(Achievements)
+export default connect((state: IProps) => state)(Achievements)

@@ -1,30 +1,14 @@
 $theme-colors: (
-	'primary': #009998
+	'primary': #009b95
 );
 
 $headings-font-family: 'Zamenhof', sans-serif;
 
-.color-violet {
-	color: #b43960;
-}
-
-.color-yellow {
-	color: #ffb30f;
-}
-
-.color-blue {
-	color: #009b95;
-}
-
-.color-red {
-	color: #f42e14;
-}
-
 @font-face {
 	font-family: 'Zamenhof';
-	font-style: normal;
-	font-weight: normal;
-	src: local('Zamenhof');
+	src: url('/proprietary/fonts/Zamenhof-Plain.woff') format('woff'),
+		url('/proprietary/fonts/Zamenhof-Plain.ttf') format('truetype'),
+		url('/proprietary/fonts/Zamenhof-Plain.eot') format('embedded-opentype');
 }
 
 @import 'bootstrap/scss/bootstrap';
@@ -33,5 +17,5 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: sans-serif;
-	background-image: url('./../images/background.png');
+	background-color: black;
 }

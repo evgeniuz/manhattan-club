@@ -1,19 +1,18 @@
 import * as React from 'react'
+
 import { connect } from 'react-redux'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faMedal } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-import { IAchievement } from '../constants'
 
 library.add(faMedal)
 
-export interface IStoreProps {
+interface IStoreProps {
 	achievements: IAchievement[]
 }
 
-export interface IOwnProps {
+interface IOwnProps {
 	achievementId: string
 	count: number
 }
