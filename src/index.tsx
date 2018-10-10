@@ -12,7 +12,7 @@ import { unregisterServiceWorker, fetchData } from 'utils'
 import Achievements from 'components/Achievements'
 import Main from 'components/Main'
 
-import 'css/index.css'
+import 'css/index.scss'
 
 unregisterServiceWorker()
 
