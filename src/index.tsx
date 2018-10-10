@@ -1,13 +1,16 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
-import { createStore, Store } from 'redux'
+import { createStore, Store, applyMiddleware, AnyAction } from 'redux'
 import { Provider } from 'react-redux'
+import reduxThunk, { ThunkMiddleware, ThunkDispatch } from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import { rootReducer } from 'reducers'
-import { unregisterServiceWorker, fetchData } from 'utils'
+import { fetchScores, fetchTeams, fetchAchievements } from 'actions'
+import { rootReducer, IState } from 'reducers'
+import { unregisterServiceWorker } from 'utils'
 
 import Achievements from 'components/Achievements'
 import Main from 'components/Main'
@@ -16,13 +19,16 @@ import 'css/index.scss'
 
 unregisterServiceWorker()
 
-const store: Store = createStore(
+const store: Store & {
+	dispatch: ThunkDispatch<IState, undefined, AnyAction>
+} = createStore(
 	rootReducer,
-	(window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
-		(window as any).__REDUX_DEVTOOLS_EXTENSION__()
+	composeWithDevTools(applyMiddleware(reduxThunk as ThunkMiddleware))
 )
 
-fetchData(store)
+store.dispatch(fetchScores())
+store.dispatch(fetchTeams())
+store.dispatch(fetchAchievements())
 
 ReactDOM.render(
 	<Provider store={store}>

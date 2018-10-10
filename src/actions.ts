@@ -1,3 +1,12 @@
+import { Dispatch, AnyAction } from 'redux'
+import { ThunkAction } from 'redux-thunk'
+
+import * as iconv from 'iconv-lite'
+
+import { IState } from 'reducers'
+
+type ThunkResult<R> = ThunkAction<R, IState, undefined, AnyAction>
+
 export const SELECT_TEAM: string = 'SELECT_TEAM'
 export const UPDATE_SCORES: string = 'UPDATE_SCORES'
 export const UPDATE_TEAMS: string = 'UPDATE_TEAMS'
@@ -39,4 +48,39 @@ export function updateAchievements(
 
 export function updateTeams(teams: ITeam[]): IUpdateTeamsAction {
 	return { teams, type: UPDATE_TEAMS }
+}
+
+export function fetchScores(): ThunkResult<void> {
+	return (dispatch: Dispatch): void => {
+		fetch('/data/scores.html')
+			.then((response: Response) => response.arrayBuffer())
+			.then((buffer: ArrayBuffer) =>
+				iconv.decode(Buffer.from(new Uint8Array(buffer)), 'win1251')
+			)
+			.then((html: string) => dispatch(updateScores(html)))
+	}
+}
+
+export function fetchAchievements(): ThunkResult<void> {
+	return (dispatch: Dispatch): void => {
+		fetch('/data/achievements.json')
+			.then((response: Response) => response.json())
+			.then((achievements: IAchievement[]) =>
+				dispatch(updateAchievements(achievements))
+			)
+	}
+}
+
+export function fetchTeams(): ThunkResult<void> {
+	return (dispatch: Dispatch): void => {
+		fetch('/data/teams.json')
+			.then((response: Response) => response.json())
+			.then((teams: ITeam[]) => {
+				dispatch(updateTeams(teams))
+
+				if (teams.length > 0) {
+					dispatch(selectTeam(teams[0]))
+				}
+			})
+	}
 }

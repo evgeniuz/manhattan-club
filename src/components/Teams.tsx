@@ -46,7 +46,8 @@ export default connect(
 	(state: IStateProps) => state,
 	(dispatch: Dispatch<ISelectTeamAction>) => {
 		return {
-			onSelectTeam: (team: ITeam) => dispatch(selectTeam(team))
+			onSelectTeam: (team: ITeam): ISelectTeamAction =>
+				dispatch(selectTeam(team))
 		}
 	}
 )(Teams)
