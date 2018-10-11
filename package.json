@@ -23,8 +23,10 @@
 	"scripts": {
 		"build": "react-scripts-ts build",
 		"start": "react-scripts-ts start",
+		"typecheck": "tsc --noEmit",
 		"lint": "tslint --project .",
-		"prettier": "prettier --write '**'"
+		"prettier": "prettier --write '**'",
+		"critic": "npm run prettier && npm run lint && npm run typecheck"
 	},
 	"devDependencies": {
 		"@types/fast-levenshtein": "^0.0.1",
