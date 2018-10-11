@@ -1,9 +1,10 @@
 import * as React from 'react'
 
-import * as levenshtein from 'fast-levenshtein'
+import { connect } from 'react-redux'
+
+import { check, IAnswer } from 'checker'
 
 import Header from 'components/Header'
-import { connect } from 'react-redux'
 
 interface IProps {
 	answers: string[]
@@ -11,58 +12,66 @@ interface IProps {
 
 interface IState {
 	guess: string
-	correct: string
-	index: number
 }
 
 class Password extends React.PureComponent<IProps, IState> {
 	constructor(props: IProps) {
 		super(props)
-		this.state = { guess: '', correct: '', index: -1 }
+
+		this.state = { guess: '' }
 
 		this.handleGuess = this.handleGuess.bind(this)
 	}
 
 	public handleGuess(event: React.ChangeEvent<HTMLInputElement>): void {
 		const guess: string = event.target.value
+
+		this.setState({ guess })
+	}
+
+	notification(text: string, type: string): JSX.Element {
+		return <div className={`alert alert-${type}`}>{text}</div>
+	}
+
+	status(guess: string): JSX.Element {
+		if (!guess) {
+			return this.notification('Введіть відповідь нижче', 'info')
+		}
+
 		const { answers }: IProps = this.props
+		const answer: IAnswer | undefined = check(answers, guess)
 
-		const distances: string[] = answers.filter(
-			(answer: string) =>
-				levenshtein.get(answer.toLowerCase(), guess.toLowerCase()) < 2
+		if (answer) {
+			return this.notification(
+				`Знайшли відповідь №${answer.index}: ${answer.answer}!`,
+				'success'
+			)
+		}
+
+		return this.notification(
+			`Спробуйте ще...${
+				guess.indexOf(' ') !== -1
+					? ' Доречі, у правильній відповіді лише одне слово.'
+					: ''
+			}`,
+			'warning'
 		)
-
-		const correct: string = distances.length > 0 ? distances[0] : ''
-		const index: number = answers.indexOf(correct) + 1
-
-		this.setState({
-			correct,
-			guess,
-			index
-		})
 	}
 
 	public render(): JSX.Element {
-		const { guess, correct, index }: IState = this.state
+		const { guess }: IState = this.state
 
 		return (
 			<React.Fragment>
-				<Header title="Пароль «рыба-меч»" />
-				<div className="text-white">
-					{guess && (
-						<React.Fragment>
-							{correct
-								? `Знайшли відповідь №${index}: ${correct}!`
-								: 'Спробуйте ще...'}
-						</React.Fragment>
-					)}
-					{!correct &&
-						guess.indexOf(' ') !== -1 && (
-							<React.Fragment>
-								Доречі, у правильній відповіді лише одне слово.
-							</React.Fragment>
-						)}
-					<input value={guess} onChange={this.handleGuess} />
+				<Header title="Перевірка відповіді" />
+				<div className="container text-white text-center">
+					{this.status(guess)}
+					<input
+						className="form-control"
+						placeholder="Введіть відповідь"
+						value={guess}
+						onChange={this.handleGuess}
+					/>
 				</div>
 			</React.Fragment>
 		)
