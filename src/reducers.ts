@@ -55,7 +55,10 @@ function scoresHTML(state: string = '', action: IUpdateScoresAction): string {
 	}
 }
 
-function answers(state: string[] = [], action: IUpdateAnswersAction): string[] {
+function answers(
+	state: string[][] = [],
+	action: IUpdateAnswersAction
+): string[][] {
 	switch (action.type) {
 		case UPDATE_ANSWERS:
 			return action.answers
@@ -69,7 +72,7 @@ export interface IState {
 	teams: ITeam[]
 	selectedTeam: ITeam | null
 	scoresHTML: string
-	answers: string[]
+	answers: string[][]
 }
 
 export const rootReducer: Reducer<IState, AnyAction> = combineReducers({

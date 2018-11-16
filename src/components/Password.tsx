@@ -7,7 +7,7 @@ import { check, IAnswer } from 'checker'
 import Header from 'components/Header'
 
 interface IProps {
-	answers: string[]
+	answers: string[][]
 }
 
 interface IState {

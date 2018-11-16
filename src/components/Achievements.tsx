@@ -3,8 +3,8 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 
 import Header from 'components/Header'
-import Teams from 'components/Teams'
-import Team from 'components/Team'
+// import Teams from 'components/Teams'
+// import Team from 'components/Team'
 
 export interface IProps {
 	selectedTeam: ITeam
@@ -16,7 +16,8 @@ function Achievements({ selectedTeam }: IProps): JSX.Element {
 		<React.Fragment>
 			<Header title="Достижения" />
 			<div className="container text-light">
-				<div className="row">
+				<h1 className="text-center">Эта страница на реставрации :)</h1>
+				{/* <div className="row">
 					<div className="col-md-4">
 						<Teams />
 					</div>
@@ -24,7 +25,7 @@ function Achievements({ selectedTeam }: IProps): JSX.Element {
 					<div className="col-md-8">
 						{selectedTeam && <Team team={selectedTeam} />}
 					</div>
-				</div>
+				</div> */}
 			</div>
 		</React.Fragment>
 	)

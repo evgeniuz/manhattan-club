@@ -35,7 +35,7 @@ export interface IUpdateTeamsAction {
 
 export interface IUpdateAnswersAction {
 	type: typeof UPDATE_ANSWERS
-	answers: string[]
+	answers: string[][]
 }
 
 export function selectTeam(team: ITeam): ISelectTeamAction {
@@ -56,7 +56,7 @@ export function updateTeams(teams: ITeam[]): IUpdateTeamsAction {
 	return { teams, type: UPDATE_TEAMS }
 }
 
-export function updateAnswers(answers: string[]): IUpdateAnswersAction {
+export function updateAnswers(answers: string[][]): IUpdateAnswersAction {
 	return { answers, type: UPDATE_ANSWERS }
 }
 
@@ -99,7 +99,7 @@ export function fetchAnswers(): ThunkResult<void> {
 	return (dispatch: Dispatch): void => {
 		fetch('/data/answers.json')
 			.then((response: Response) => response.json())
-			.then((answers: string[]) => {
+			.then((answers: string[][]) => {
 				dispatch(updateAnswers(answers))
 			})
 	}

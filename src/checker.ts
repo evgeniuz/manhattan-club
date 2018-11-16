@@ -10,17 +10,29 @@ function editDistance(a: string, b: string): number {
 	return levenshtein.get(a.toLowerCase(), b.toLowerCase())
 }
 
-export function check(answers: string[], guess: string): IAnswer | undefined {
-	const close: string[] = answers.filter(
-		(answer: string) => editDistance(answer, guess) < 2
-	)
+function answerReducer(
+	guess: string,
+	result: IAnswer[],
+	variants: string[],
+	index: number
+): IAnswer[] {
+	return [
+		...result,
+		...variants.map((variant: string) => ({
+			answer: variant,
+			index: index + 1,
+			distance: editDistance(variant, guess)
+		}))
+	]
+}
+
+export function check(answers: string[][], guess: string): IAnswer | undefined {
+	const close: IAnswer[] = answers
+		.reduce(answerReducer.bind(undefined, guess), [] as IAnswer[])
+		.filter((answer: IAnswer) => answer.distance < 2)
 
 	if (close.length > 0) {
-		const answer: string = close[0]
-		const index: number = answers.indexOf(answer) + 1
-		const distance: number = editDistance(answer, guess)
-
-		return { answer, index, distance }
+		return close[0]
 	}
 
 	return undefined
